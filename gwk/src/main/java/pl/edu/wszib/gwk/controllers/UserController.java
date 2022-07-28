@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.edu.wszib.gwk.model.Game;
 import pl.edu.wszib.gwk.model.User;
 import pl.edu.wszib.gwk.services.UserService;
 
@@ -30,7 +31,7 @@ public class UserController {
     @PostMapping("/register")
     public String register(@ModelAttribute User user){
         System.out.println("register request: " + user);
-        User registeredUser = userService.registerUser(user.getLogin(), user.getPassword(), user.getEmail());
+        User registeredUser = userService.registerUser(user.getLogin(), user.getPassword(), user.getEmail(), user.getNumberOfBankingCard(), user.getCvvCod(), user.getBalance(), user.getCheckbox());
         return registeredUser == null ? "error_page" : "redirect:/login";
     }
     @PostMapping("/login")
@@ -39,7 +40,8 @@ public class UserController {
         User authenticated = userService.authenticate(user.getLogin(), user.getPassword());
         if(authenticated != null){
             model.addAttribute("userLogin", authenticated.getLogin());
-            return "personal_page";
+            model.addAttribute("userBalance", authenticated.getBalance());
+            return "/game_page";
         }else {
             return "error_page";
         }

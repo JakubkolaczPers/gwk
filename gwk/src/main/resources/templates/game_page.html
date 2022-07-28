@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Page</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div>
+    <h2 align="center" >Witamy  <span th:text="${userLogin}"></span></h2>
+    <h2 align="center"> Posiadasz <span th:text="${userBalance}"></span> zł </h2>
+</div>
+<div class="form">
+    <form method="post" action="/game" th:object="${gameRequest}">
+        <h2>Gra</h2>
+             <div class="input-box">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input type="number" name="yourBet" placeholder="Twoja stawka" required>
+        </div>
+        <div class="input-box">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input type="number" name="numberOfYourChoice" placeholder="Twoja liczba" min="1" max="6" pattern="[1-6]{1}" title="Zgadni co wypadnie na kosci" required>>
+        </div>
+        <div class="input-box">
+            <input type="submit" name="sign-in" value="Graj">
+        </div>
+        <a href="/">Wtisnij tu zeby wrjść na sttone glówną</a>
+    </form>
+</div>
+</body>
+</html>
