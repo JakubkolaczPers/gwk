@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import pl.edu.wszib.gwk.model.Game;
 import pl.edu.wszib.gwk.model.User;
 import pl.edu.wszib.gwk.services.UserService;
 
