@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.edu.wszib.gwk.model.Game;
-import pl.edu.wszib.gwk.services.GameService;
+import pl.edu.wszib.gwk.service.impl.GameServiceImpl;
 
 @Controller
 public class GameController {
 
-    private final GameService gameService;
+    private final GameServiceImpl gameService;
 
-    public GameController(GameService gameService) {
+    public GameController(GameServiceImpl gameService) {
         this.gameService = gameService;
     }
 
