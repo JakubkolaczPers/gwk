@@ -2,25 +2,24 @@ package pl.edu.wszib.gwk.model;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "users_table", indexes = {
-        @Index(name = "idx_user_billingdetails", columnList = "billingDetails")
-})
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column (name="u_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String login;
     private String password;
@@ -29,8 +28,5 @@ public class User {
     private String numberOfBankingCard;
     private String cvvCod;
     private int balance;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_u_id", referencedColumnName = "u_id")
-    private Set<Game> gamer = new HashSet<>();
+    private Long currentSessionId;
 }

@@ -11,4 +11,5 @@ public interface UserService {
                       int balance,
                       String checkbox);
     User authenticate(String login, String password);
+
 }
